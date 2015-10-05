@@ -1,19 +1,5 @@
 #!/bin/sh
-# done for Altima by seikath
-# start 2015-10-02
-
-# 1   : crontab to activate the global userstat at 00:00 every friday
-# 0 0 * * 5  mysql -e 'use information_schema; flush INDEX_STATISTICS; set global userstat=1;' && echo "$(date) : $HOSTNAME MariaDB userstat has been enabled" >> /var/log/$HOSTNAME.mariadb.dynamic.config.changes.log 2>&1
-# 1.1 : optional - flush the INDEX_STATISTICS table or not - make it configurable ...  bash script to be executed instead of the command lines 
-
-# 2   : cron job to disable the global userstat at 00:00 every saturday  
-# 0 0 * * 6  mysql -e 'set global userstat=0;' && echo "$(date) : $HOSTNAME MariaDB userstat has been disabled" >> /var/log/$HOSTNAME.mariadb.dynamic.config.changes.log 2>&1
-
-# 3   : get the /tmp/mysql-slow.log part for  Friday DONE : 
-
-# 3.1   : execute the pt-index-usage using that part to generate the report , check for the approproate time to do that in a view to avoid loading the production server
-#
-
+# done by seikath
 
 # check executable permissions
 
@@ -31,6 +17,7 @@ exit 0
 # better solotion as we might execute it any day beore the next friday .. 
 get_start_friday_unix_timestamp=$(date -d "last friday" +%s)
 get_end_friday_unix_timestamp=$(date -d "last saturday" +%s)
+
 
 # local test :
 slow_log=babami-slow.log
