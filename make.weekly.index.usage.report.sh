@@ -8,7 +8,12 @@ test ! -x ${0} && echo "$(date) : ${0} is non executable. Please chmod +x it and
 echo "$(date) : the ${0} is executable} .. "
 
 # include the user / host / password 
-test -f ${0%.*}.conf && source ${0%.*}.conf && test ! -z $_user && echo "$(date) : config file loaded"
+echo "$(date) : checking the ${0%.*}.conf .."
+test ! -f ${0%.*}.conf && echo "$(date) : the config file ${0%.*}.conf file is missing, exiting noe" && exit 0
+echo "$(date) : loading the ${0%.*}.conf .."
+source ${0%.*}.conf
+test $?0 -gt 0 && echo "$(date) : config file failed to load" && exit 0
+test -z $_user && echo "$(date) : loading the ${0%.*}.conf loaded but there is missing _user value. cannot continue, exiting" && exit 0
 
 exit 0
 # get_start_unix_timestamp=$(date -d "yesterday 00:00" +%s)
