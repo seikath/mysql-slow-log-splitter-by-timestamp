@@ -1,11 +1,11 @@
 #!/bin/sh
 # done for Altima by seikath
 # start 2015-10-02
-# 10 0 * * * /root/tools/make.daily.extract.from.mysql.slow.log.sh PATH_HERE DB_CHEMA >> /var/log/make.daily.extract.from.mysql.slow.log.log 2>&1
+# 10 0 * * * /root/bin/make.daily.extract.from.mysql.slow.log.sh PATH_HERE DB_CHEMA >> /var/log/make.daily.extract.from.mysql.slow.log.log 2>&1
 
 # import local config if its working on my Mac
 # make the life easier at my Mac 1
-test "$(hostname)" == "Ivans-MacBook-Pro.local" \
+test "$(hostname)" == "darkwastar.on.mac" \
 && test -f bash.config.conf \
 && test -r bash.config.conf \
 && source bash.config.conf
@@ -30,7 +30,7 @@ test ${#@} -eq 0 && echo "$(date) : usage : $(basename ${0}) mysql-slow.log_abso
 slow_log="${1}" 
 
 # make the life easier at my Mac 2 
-test "$(hostname)" == "Ivans-MacBook-Pro.local" \
+test "$(hostname)" == "darkwastar.on.mac" \
 && test -f bash.config.conf \
 && test -r bash.config.conf \
 && slow_log_default="${projects_proceed_slow_logs_directory}/${1}" \
