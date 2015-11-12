@@ -3,7 +3,7 @@ Extracts the part of the MariaDB, Percona or MySQL slow log between two timestam
 
 make.daily.extract.from.mysql.slow.log.sh filters by db name if provided from the command line 
 ```{r, engine='bash', count_lines}
-root@mysql_db_1:[Thu Nov 12 05:27:17][/tmp]$ /root/bin/make.daily.extract.from.mysql.slow.log.sh /tmp/mysql_db_1-slow.log 3VUE
+root@mysql_db_1:[Thu Nov 12 05:27:17][/tmp]$ /root/bin/make.daily.extract.from.mysql.slow.log.sh /tmp/mysql_db_1-slow.log bsms
 Thu Nov 12 05:27:36 EST 2015 : FYI we detected configured slow log here: /tmp/mysql_db_1-slow.log
 Thu Nov 12 05:27:36 EST 2015 : proceeding with the /tmp/mysql_db_1-slow.log slow log ...
 Thu Nov 12 05:27:36 EST 2015 : checking for Schema: bsms
